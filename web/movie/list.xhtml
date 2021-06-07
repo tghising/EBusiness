@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/custom.css"/>
+        <title>The Stock of Movies | e-Business</title>
+    </h:head>
+    <h:body>      
+        <div class="container">
+            <div class="header-panel">
+                <div class="row" style="background-color: #006080;"> 
+                    <h2>
+                        <h:outputText style="color: white;" value="The Stock of Movies"/>
+                    </h2>
+                </div>                      
+            </div>
+            <div class="row">             
+                <h:outputText style="color: blue;" value="Successfully created the movie: #{movieController.movie.title}" rendered="#{movieController.movie.title != null}" />              
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="table-responsive">
+                    <h:dataTable value="#{movieController.movieList}" var="movie" border="1" class="table table-striped table-hover table-bordered">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.id}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Title"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.title}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Description"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.description}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Company"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.company}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Platform"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.platform}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Classification"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.classification}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Price"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.price}">
+                                <f:convertNumber pattern = "$###,###.###" />                                
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Stock Number"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.stockNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Duration"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.duration} minutes">
+                            <f:convertNumber pattern = "###.##" /> 
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Special Features"/>
+                            </f:facet>
+                            <h:outputText value="#{movie.specialFeatures}"/>
+                        </h:column>		
+
+                        <!--                        <h:column>
+                                                    <f:facet name="header">Action</f:facet>
+                                                    <h:commandButton action="#{movieController.editmovie(movie.id)}" value="Update" class="btn btn-primary"/> | <h:commandButton action="#{movieBean.deletemovie(movie.id)}" value="Delete" class="btn btn-danger"/>
+                                                </h:column>-->
+                    </h:dataTable>
+                </div>
+            </div>    
+            <div class="row">
+                <h:outputText value="Total movies: #{movieController.movieList.size()}"/>
+            </div>
+            <hr/>
+            <div class="row">               
+                <h:outputLink value="#{request.contextPath}/movie/create.xhtml">Create a New Movie</h:outputLink> | <h:outputLink value="#{request.contextPath}/index.xhtml">Main Page</h:outputLink>
+            </div>
+        </div>       
+    </h:body>
+</html>

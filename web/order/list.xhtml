@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/custom.css"/>
+        <title>List of Orders | e-Business</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="header-panel">
+                <div class="row" style="background-color: #006080;"> 
+                    <h2>
+                        <h:outputText style="color: white;" value="List of Orders"/>
+                    </h2>
+                </div>                  
+                <div class="row">
+                    <h:outputText style="color: blue;" value="Successfully created the order for #{orderController.createdOrder.customer.fullName}" rendered="#{orderController.createdOrder.customer.fullName != null}" />
+                </div>   
+                <div class="row">
+                    <h:outputText style="color: blue;" value="Successfully deleted the order #{orderController.deletedOrderLine.lineNumber}" rendered="#{orderController.deletedOrderLine.lineNumber != null}" />
+                </div> 
+                <br/>
+
+                <div class="row">
+                    <div class="table-responsive"> 
+                        <h:dataTable value="#{orderController.orderLineList}" var="orderLine" border="1" class="table table-striped table-hover table-bordered">                    
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Order #"/>
+                                </f:facet>
+                                <h:outputText value="#{orderLine.lineNumber}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Customer"/>
+                                </f:facet> 
+
+                                <h:form>
+                                    <h:commandButton value="${orderLine.order.customer.fullName}" class="customButton text-primary" action="#{orderController.viewCustomerOrders}" >
+                                        <f:param id="selectedCustomerId" name="selectedCustomerId" value="#{orderLine.order.customer.id}"/>
+                                    </h:commandButton>
+                                </h:form> 
+
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Item"/>
+                                </f:facet>
+                                <h:form>                                
+
+                                    <h:commandButton value="${orderLine.item.title}" class="customButton text-primary" action="#{gameController.viewItem}" rendered="#{gameController.isInstanceOfGame(orderLine.item)}">
+                                        <f:param id="selectedGameId" name="selectedGameId" value="#{orderLine.item.id}"/>
+                                    </h:commandButton>
+                                    
+                                    <h:commandButton value="${orderLine.item.title}" class="customButton text-primary" action="#{movieController.viewItem}" rendered="#{movieController.isInstanceOfMovie(orderLine.item)}">
+                                        <f:param id="selectedMovieId" name="selectedMovieId" value="#{orderLine.item.id}"/>
+                                    </h:commandButton>
+                                </h:form> 
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Action</f:facet>
+                                <h:form>
+                                    <h:commandButton value="Delete" class="btn btn-danger" action="#{orderController.deleteOrderLine}">
+                                        <f:param id="orderLineId" name="orderLineId" value="#{orderLine.lineNumber}"/>
+                                    </h:commandButton>
+                                </h:form>
+
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+                <div class="row">
+                    <h:outputText value="Total orders: #{orderController.orderLineList.size()}"/>
+                </div>
+                <hr/>
+                <div class="row">
+                    <h:outputLink value="#{request.contextPath}/order/create.xhtml">Create a New Order</h:outputLink> | <h:outputLink value="#{request.contextPath}/index.xhtml">Main Page</h:outputLink>
+                </div>            
+            </div>
+        </div>
+    </h:body>
+</html>

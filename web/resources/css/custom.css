@@ -1,0 +1,22 @@
+.footer {
+    position: fixed;  
+    left: 10%;
+    bottom: 5%;
+    width: 100%; 
+    text-align: left;
+}
+
+.customButton {
+    border:none; 
+    text-decoration: none; 
+    color: #337ab7;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.customButton:hover {
+    text-decoration: underline;
+    
+}

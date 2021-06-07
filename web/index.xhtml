@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/custom.css"/>
+        <title>Dashboard | e-Business</title>        
+    </h:head>
+    <h:body>        
+        <div class="container">
+            <div class="header-panel">
+                <div class="row" style="background-color: #006080;"> 
+                    <h2>
+                        <h:outputText style="color: white;" value="eBusiness: Product, Customer and Order Management"/>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table>
+                        <tr>           
+                            <td>
+                                <h2>PRODUCTS</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>                                
+                                <h:outputLink value="#{request.contextPath}/movie/create.xhtml">Create a New Movie</h:outputLink> | <h:outputLink value="#{request.contextPath}/movie/list.xhtml">The Stock of Movies</h:outputLink> | <h:outputLink value="#{request.contextPath}/movie/search.xhtml">Search for a Movie</h:outputLink>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:outputLink value="#{request.contextPath}/game/create.xhtml">Create a New Game</h:outputLink> | <h:outputLink value="#{request.contextPath}/game/list.xhtml">The Stock of Games</h:outputLink> | <h:outputLink value="#{request.contextPath}/game/search.xhtml">Search for a Game</h:outputLink>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>CUSTOMERS</h2> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:outputLink value="#{request.contextPath}/customer/create.xhtml">Create a New Customer</h:outputLink> | <h:outputLink value="#{request.contextPath}/customer/list.xhtml">List of Customers</h:outputLink> | <h:outputLink value="#{request.contextPath}/customer/search.xhtml">Search for a Customer</h:outputLink>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>ORDERS</h2> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>                                
+                                <h:outputLink value="#{request.contextPath}/order/create.xhtml">Create a New Order</h:outputLink> | <h:outputLink value="#{request.contextPath}/order/list.xhtml">List of Orders</h:outputLink> | <h:outputLink value="#{request.contextPath}/order/search.xhtml">Search for an Order</h:outputLink>
+                            </td>                          
+                        </tr>
+                    </table>     
+                </div>           
+            </div>
+
+            <div class="row">
+                <div class="footer">
+                    <hr/>                     
+                    <div className="copyright">
+                        &copy; 2021 <strong><span>e-Business System</span></strong>. All Rights Reserved
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </h:body>
+</html>

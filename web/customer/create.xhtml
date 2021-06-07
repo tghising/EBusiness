@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/custom.css"/>
+        <title>Create a New Customer | e-Business</title>
+
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="header-panel">
+                <div class="row" style="background-color: #006080;"> 
+                    <h2>
+                        <h:outputText style="color: white;" value="Create a New Customer"/>
+                    </h2>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <h:form class="form-horizontal" >   
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel value="Name: "/>
+                        <h:inputText value="#{customerController.selectedCustomer.fullName}" class="form-control" validatorMessage="Name is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+
+                        <h:outputLabel value="Address: "/>
+                        <h:inputText value="#{customerController.selectedCustomer.address}" class="form-control" validatorMessage="Address is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Phone Number: "/>
+                        <h:inputText value="#{customerController.selectedCustomer.phoneNumber}" class="form-control" validatorMessage="Phone Number is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+
+                        <h:outputLabel value="Email Address: "/>
+                        <h:inputText value="#{customerController.selectedCustomer.email}" class="form-control" validatorMessage="Email Address is required">
+                            <f:validateRequired />
+                        </h:inputText>
+                        
+                    </h:panelGrid>
+                    <h:commandButton value="Create a Customer" action="#{customerController.createCustomer}"/>
+                </h:form>
+            </div>
+            <div class="row">
+                <div class="footer">
+                    <hr/> 
+                    <h:outputLink value="#{request.contextPath}/customer/list.xhtml">Customer List</h:outputLink> | <h:outputLink value="#{request.contextPath}/index.xhtml">Main Page</h:outputLink>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/custom.css"/>
+        <title>The Found Customer | e-Business</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="header-panel">
+                <div class="header-panel">
+                    <div class="row" style="background-color: #006080;"> 
+                        <h2>
+                            <h:outputText style="color: white;" value="The Found Customer"/>
+                        </h2>
+                    </div>                
+                </div>                
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <h:dataTable value="#{customerController.foundCustomerList}" var="customer" border="1" class="table table-striped table-hover table-bordered">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{customer.id}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{customer.fullName}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Phone Number"/>
+                            </f:facet>
+                            <h:outputText value="#{customer.phoneNumber}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Address"/>
+                            </f:facet>
+                            <h:outputText value="#{customer.address}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Email Address"/>
+                            </f:facet>
+                            <h:outputText value="#{customer.email}"/>
+                        </h:column>  
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Orders"/>
+                            </f:facet>
+                            <h:outputText value="#{customer.email}"/>
+                        </h:column>
+
+                    </h:dataTable>
+                </div>
+            </div>
+            <div class="row">
+                <h:outputText value="Total customers: #{customerController.foundCustomerList.size()}" rendered="#{customerController.foundCustomerList.size() > 0}" />
+                <h:outputText value="#{customerController.selectedCustomer.fullName} was not found." rendered="#{customerController.foundCustomerList.size() == 0}"/>
+            </div>
+            <hr/>
+            <div class="row">
+                <h:outputLink value="#{request.contextPath}/customer/create.xhtml"> Create a New Customer </h:outputLink> |  <h:outputLink value="#{request.contextPath}/index.xhtml">Main Page</h:outputLink>
+            </div>                      
+        </div>       
+    </h:body>
+</html>

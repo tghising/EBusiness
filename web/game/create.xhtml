@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/custom.css"/>
+        <title>Create a New Game | e-Business</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="header-panel">
+                <div class="row" style="background-color: #006080;"> 
+                    <h2>
+                        <h:outputText style="color: white;" value="Create a New Game"/>
+                    </h2>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <h:form class="form-horizontal" > 
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Title: "/>
+                        <h:inputText value="#{gameController.game.title}" class="form-control" validatorMessage="Title is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Description:"/>
+                        <h:inputTextarea value="#{gameController.game.description}" cols="20" rows="5" class="form-control" validatorMessage="Description is required">
+                            <f:validateRequired />
+                        </h:inputTextarea>
+
+                        <h:outputLabel value="Company: "/>
+                        <h:inputText value="#{gameController.game.company}" class="form-control" validatorMessage="Company is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Platform:"/>
+                        <h:inputText value="#{gameController.game.platform}" class="form-control" validatorMessage="Platform is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Classification: "/>
+                        <h:inputText value="#{gameController.game.classification}" class="form-control" validatorMessage="Classification is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Price: "/>
+                        <h:inputText value="#{gameController.game.price}" class="form-control" validatorMessage="Price is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Stock Number: "/>
+                        <h:inputText value="#{gameController.game.stockNumber}" class="form-control" validatorMessage="Stock Number is required">
+                            <f:validateRequired />
+                        </h:inputText> 
+
+                        <h:outputLabel value="HD Video Output: "/>
+                        <h:inputText value="#{gameController.game.hdVideoOutput}" class="form-control" validatorMessage="HD Video Output is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Hard Drive Space: "/>
+                        <h:inputText value="#{gameController.game.hardDriveSpace}" class="form-control" validatorMessage="Hard Drive Space is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                        <h:outputLabel value="Number Of Players: "/>
+                        <h:inputText value="#{gameController.game.numberOfPlayers}" class="form-control" validatorMessage="Number Of Players is required">
+                            <f:validateRequired />
+                        </h:inputText>
+
+                    </h:panelGrid>
+                    <h:commandButton value="Create a Game" action="#{gameController.createGame}"/>
+                </h:form>
+            </div>
+            <div class="row">
+                <div class="footer">
+                    <hr/>                     
+                    <h:outputLink value="#{request.contextPath}/game/list.xhtml">The Stock of Games</h:outputLink> | <h:outputLink value="#{request.contextPath}/index.xhtml">Main Page</h:outputLink>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
